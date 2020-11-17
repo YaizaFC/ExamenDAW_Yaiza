@@ -8,14 +8,14 @@ use SujalPatel\IntToEnglish\IntToEnglish;
 
 if (isset($_REQUEST['calcular'])) {
     echo '<html><head>
-<link rel="stylesheet" type="text/css" href="CSS/estilo.css"></head><body>';
+<link rel="stylesheet" type="text/css" href="CSS/estilo2.css"></head><body>';
     $latitud1 = $_REQUEST['lat1'];
     $longitud1 = $_REQUEST['lon1'];
     $latitud2 = $_REQUEST['lat2'];
     $longitud2 = $_REQUEST['lon2'];
     // Set our Lat/Long coordinates
     $ipswich = new LatLong($latitud1, $longitud1);
-    $london = new LatLong($latitud2, $longitud);
+    $london = new LatLong($latitud2, $longitud2);
 
     // Get the distance between these two Lat/Long coordinates...
     $distanceCalculator = new DistanceCalculator($ipswich, $london);
@@ -30,8 +30,9 @@ if (isset($_REQUEST['calcular'])) {
     echo '<h1>La distancia entre el punto (' . $latitud1 . ', ' . $longitud1 . ') y el punto (' . $latitud2 . ', ' . $longitud2 . ') es: <br><h3 class=resul>' . $distancia . '</h3>';
     echo '<h1>La distancia entre el punto (' . $latitud1 . ', ' . $longitud1 . ') y el punto (' . $latitud2 . ', ' . $longitud2 . ') es: <br><h3 class=resul>' . IntToEnglish::Int2Eng(intval($distancia)) . '</h3><br><br><br><br>';
     echo '<input type="button" onclick="history.back()" name="volver atrás" value="volver atrás" id="atras"></div>';
-    echo '<p class="info">Yaiza Fritis Calvo<br>Despliegue de Aplicaciones Web <br> Examen primer trimestre</p>';
-}
+    echo '<p class="info">Yaiza Fritis Calvo<br>Despliegue de Aplicaciones Web <br> Examen primer trimestre</p></body></html>';
+}else{
+
 echo '
 
 <!DOCTYPE html>
@@ -89,22 +90,22 @@ echo '
                 
                 <div class="input-field col s2">
                     <label for="n_entero">Introduce la Latitud Punto 1:</label>
-                    <input name="last1" type="text" class="validate">
+                    <input name="lat1" type="text" class="validate" required>
                     
                 </div>
                 <div class="input-field col s2">
                     <label for="n_entero">Introduce la Longitud  Punto 1:</label>
-                    <input name="lon1" type="text" class="validate">
+                    <input name="lon1" type="text" class="validate" required>
                 
                 </div>
                 <div class="input-field col s2">
                     <label for="n_entero">Introduce la Latitud Punto 2:</label>
-                    <input name="lat2" type="text" class="validate">
+                    <input name="lat2" type="text" class="validate" required>
                 
                 </div>
                 <div class="input-field col s2">
                     <label for="n_entero">Introduce la Longitud  Punto 2:</label>
-                    <input name="lon2" type="text" class="validate">
+                    <input name="lon2" type="text" class="validate" required>
                 
                 </div>
                
@@ -126,5 +127,5 @@ echo '
 </body>
 
 </html>';
-
+}
 ?>
