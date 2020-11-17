@@ -1,6 +1,38 @@
 <?php
+require __DIR__ . '/vendor/autoload.php';
 
-echo'
+use Ballen\Distical\Calculator as DistanceCalculator;
+use Ballen\Distical\Entities\LatLong;
+use Illuminate\Http\Request;
+use SujalPatel\IntToEnglish\IntToEnglish;
+
+if (isset($_REQUEST['calcular'])) {
+    echo '<html><head>
+<link rel="stylesheet" type="text/css" href="CSS/estilo.css"></head><body>';
+    $latitud1 = $_REQUEST['lat1'];
+    $longitud1 = $_REQUEST['lon1'];
+    $latitud2 = $_REQUEST['lat2'];
+    $longitud2 = $_REQUEST['lon2'];
+    // Set our Lat/Long coordinates
+    $ipswich = new LatLong($latitud1, $longitud1);
+    $london = new LatLong($latitud2, $longitud);
+
+    // Get the distance between these two Lat/Long coordinates...
+    $distanceCalculator = new DistanceCalculator($ipswich, $london);
+
+    // You can then compute the distance...
+    $distance = $distanceCalculator->get();
+    $distancia = $distance->asMiles();
+    // you can also chain these methods together eg. $distanceCalculator->get()->asMiles();
+
+    // We can now output the miles using the asMiles() method, you can also calculate and use asKilometres() or asNauticalMiles() as required!
+    echo '<div id="cuadroDistancia">';
+    echo '<h1>La distancia entre el punto (' . $latitud1 . ', ' . $longitud1 . ') y el punto (' . $latitud2 . ', ' . $longitud2 . ') es: <br><h3 class=resul>' . $distancia . '</h3>';
+    echo '<h1>La distancia entre el punto (' . $latitud1 . ', ' . $longitud1 . ') y el punto (' . $latitud2 . ', ' . $longitud2 . ') es: <br><h3 class=resul>' . IntToEnglish::Int2Eng(intval($distancia)) . '</h3><br><br><br><br>';
+    echo '<input type="button" onclick="history.back()" name="volver atrás" value="volver atrás" id="atras"></div>';
+    echo '<p class="info">Yaiza Fritis Calvo<br>Despliegue de Aplicaciones Web <br> Examen primer trimestre</p>';
+}
+echo '
 
 <!DOCTYPE html>
 <html>
@@ -57,22 +89,22 @@ echo'
                 
                 <div class="input-field col s2">
                     <label for="n_entero">Introduce la Latitud Punto 1:</label>
-                    <input name="n_entero" type="text" class="validate">
+                    <input name="last1" type="text" class="validate">
                     
                 </div>
                 <div class="input-field col s2">
                     <label for="n_entero">Introduce la Longitud  Punto 1:</label>
-                    <input name="n_entero" type="text" class="validate">
+                    <input name="lon1" type="text" class="validate">
                 
                 </div>
                 <div class="input-field col s2">
                     <label for="n_entero">Introduce la Latitud Punto 2:</label>
-                    <input name="n_entero" type="text" class="validate">
+                    <input name="lat2" type="text" class="validate">
                 
                 </div>
                 <div class="input-field col s2">
                     <label for="n_entero">Introduce la Longitud  Punto 2:</label>
-                    <input name="n_entero" type="text" class="validate">
+                    <input name="lon2" type="text" class="validate">
                 
                 </div>
                
@@ -95,4 +127,4 @@ echo'
 
 </html>';
 
-
+?>
