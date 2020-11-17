@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use SujalPatel\IntToEnglish\IntToEnglish;
 
 if (isset($_REQUEST['calcular'])) {
-    echo '<html><head>
+    echo '<!DOCTYPE html><html><head>
 <link rel="stylesheet" type="text/css" href="CSS/estilo2.css"></head><body>';
     $latitud1 = $_REQUEST['lat1'];
     $longitud1 = $_REQUEST['lon1'];
