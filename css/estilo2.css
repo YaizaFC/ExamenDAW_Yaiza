@@ -1,0 +1,33 @@
+#cuadroDistancia{
+    text-align: center;
+    left: 18%;
+    position: relative;
+    width: 1000px;
+    background-color: rgba(250, 239, 215, 0.876);
+    border: 2px solid rgba(197, 175, 129, 0.876);
+    box-shadow: 8px 8px 10px rgb(78, 40, 4);
+    margin-bottom: 100px;
+}
+
+body{
+    background-color: rgb(241, 255, 250);
+}
+
+#atras{
+    background-color: rgb(45, 82, 112);
+    color: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+}
+
+.resul{
+    color: brown;
+}
+
+.info{
+    font-style: italic;
+    text-align: center;
+}
